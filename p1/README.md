@@ -27,7 +27,7 @@ Lottery? Powerball!
 - If player adds Multipler — When jackpots are below $150 Million, a 10X value is added
 - 10x - Prize Won Timers 10 (odds 1 in 43)
 - https://edit.nylottery.ny.gov/sites/default/files/2020-03/Powerball_Odds_and_Prizes_0.pdf
-
+Trouble figuring out a way to match the numbers
 
 
 ## Outside resources
