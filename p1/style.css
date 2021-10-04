@@ -1,0 +1,13 @@
+.balls {
+    background-color: azure;
+}
+
+.powerball {
+    background-color: red;
+    color: white;
+}
+
+.balls, .powerball {
+    padding: 1rem;
+    border-radius: 100%;
+}
