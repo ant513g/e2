@@ -49,9 +49,6 @@ $player_ball5  = rand($player_ball4+1, 69);
 $player_powerball = rand(1,26);
 
 
-// Originally I was going to do conditionals ($ball1 == $player_ball1) || ($ball1 == $player_ball2), etc. 
-// But it ended up being too long because each ball drawn had to be compared to all of the player's balls. 
-// Instead I opted to create an array of the matches, then search to see if the the matches
 
 //  Balls Number Drawn
 $drawing = [$ball1, $ball2, $ball3, $ball4, $ball5];

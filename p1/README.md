@@ -3,35 +3,24 @@
 + URL: <http://e2p1.anadesign.me>
 
 ## Game planning
-- Jackpot is x million dollars.
-- Odds
-- Cost of one ticket is $2 for player
-    - How many tickets do you want?
-- Player spent $x, won $x.
-- Select five numbers from 1 to 69 for the white balls; then select one number from 1 to 26 for the red
-        Powerball. Choose your numbers on a play slip or let the lottery terminal randomly pick your numbers. The
-        Powerball jackpot grows until it is won.
-- Randomly generate 5 numbers from 1 to 69, 1 for PowerBall from 1 to 26.
-    - Each number must be greater than the previous number.
-    - If the player's number is === to the 5 numbers, and === to powerball = Jackpot!
-    - 5 matching numbers, Prize = $1,000,000 (Powerplay $2mill)
-    - 4 matching number + powerball = $50,0000( x powerplays)
-    - 4 matching - $100 (x powerplays)
-    - 3 matching number + powerball = $100 (x powerplay)
-    - 3 matching numbers = $7 (x powerplay)
-    - 2 matching numbers + powerball = $7 (x powerplay)
-    - 1 matching number + powerball = $4 (x powerplay)
-    - 0 matching number + powerball = $4 (x powerplay)
-- Add Multiplier randomly add a power play, 2x, 3x, 4x, 5x, 10x, cost of each is multiplier is $1?
-- If player adds Multipler — When jackpots are below $150 Million, a 10X value is added
-- 10x - Prize Won Timers 10 (odds 1 in 43)
-- https://edit.nylottery.ny.gov/sites/default/files/2020-03/Powerball_Odds_and_Prizes_0.pdf
-Trouble figuring out a way to match the numbers
-
+* Randomly select five numbers from 1 to 69 for the white balls for the numbers to be drawn then select one number from 1 to 26 for the red. Create a variable for each one. 
+* Do the same as above, but for the player's numbers.
+* Check to see if the player's powerball matches the drawn powerball. If the powerball matches, create a variable to output.
+* Then check to see if any of the player's white ball numbers match any of the number's drawn. 
+* If any of the white ball matches, check to see how many of the white ball matches. Push the matches to create an array.
+* Depending on the length of the array (amount of white ball matches) output the number of matches. If there is a powerball match, output the powerball match.
+* If the player has enough matches, then compare to see if the player wins a prize. If the player wins a prize, output the amount.
+* If the player does not, the player does not win anything and the cost to play was $2.
 
 ## Outside resources
-[https://www.php.net/](PHP)
-[https://edit.nylottery.ny.gov/sites/default/files/2020-03/Powerball_Odds_and_Prizes_0.pdf](Lottery - Powerball Odds and Prizes)
+[PHP](https://www.php.net/)
+[PHP Reference, W3Schools](https://www.w3schools.com/php/php_ref_overview.asp)
+[Lottery - Powerball Odds and Prizes](https://edit.nylottery.ny.gov/sites/default/files/2020-03/Powerball_Odds_and_Prizes_0.pdf)
 
 
 ## Notes for instructor
+Originally I was going to do conditionals to see if the balls matched ($ball1 == $player_ball1) || ($ball1 == $player_ball2), etc. But this ended up being too long and complicated because each ball number drawn had to be compared to all of the player's numbers. Instead I opted to create an array of the matches, then search the array to see if any of the number matches. This made more sense because the positioning of the number doesn't have to be identical to the numbers drawn. 
+**Ex:**
+* Drawn Number: Ball 2 = 34, Ball 3 = 65.
+* Player Number: Ball 3 = 34, Ball 5 = 65.
+
