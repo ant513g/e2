@@ -100,7 +100,7 @@
             </span>
         </li>
         <li>
-            <h3>Matches: <?php echo $matches  ?></h3>
+            <h3>Matches: <?php echo $matches ?></h3>
             <?php echo(thisFunction($playerMatches) . $powerballMatch);?>
         </li>
         <li>
