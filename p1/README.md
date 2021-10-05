@@ -19,7 +19,12 @@
 
 
 ## Notes for instructor
-Originally I was going to do conditionals to see if the balls matched ($ball1 == $player_ball1) || ($ball1 == $player_ball2), etc. But this ended up being too long and complicated because each ball number drawn had to be compared to all of the player's numbers. Instead I opted to create an array of the matches, then search the array to see if any of the number matches. This made more sense because the positioning of the number doesn't have to be identical to the numbers drawn. 
+Originally I was going to do conditionals to see if the balls matched 
+```php 
+($ball1 == $player_ball1) || ($ball1 == $player_ball2) || ($ball1 == $player_ball3)
+```
+But this ended up being too long and complicated because each ball number drawn had to be compared to all of the player's numbers. Instead I opted to create an array of the matches, then search the array to see if any of the number matches. This made more sense because the positioning of the number doesn't have to be identical to the numbers drawn. 
+
 **Ex:**
 * Drawn Number: Ball 2 = 34, Ball 3 = 65.
 * Player Number: Ball 3 = 34, Ball 5 = 65.
