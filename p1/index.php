@@ -1,34 +1,18 @@
 <?php 
-/* http://e2p1.anadesign.me/ */
-
-// $ball1 = rand(1,65);
-// $ball2 = rand($ball1+1, 66); //Min must be greater than the previous ball, Max must leave space for all the balls
-// $ball3 = rand($ball2+1, 67);
-// $ball4 = rand($ball3+1, 68);
-// $ball5 = rand($ball4+1, 69); 
-// $powerball = rand(1,26);
-
-// $player_ball1 = rand(1,65);
-// $player_ball2  = rand($player_ball1+1, 66); //Min must be greater than the previous ball, Max must leave space for all the balls
-// $player_ball3  = rand($player_ball2+1, 67);
-// $player_ball4  = rand($player_ball3+1, 68);
-// $player_ball5  = rand($player_ball4+1, 69); 
-// $player_powerball = rand(1,26);
-
-//Player Cost to Play
 $cost = 2;
 
 //Prizes
-$total = 685000000;
+//I'm not sure how to include a ","
+$total = "450 million";
 
 //Match 5 + PB
-$jackpot= $total * .68;
+$jackpot= "306 million";
 
 //Match 5
-$secondPrize = 1000000;
+$secondPrize = "1 million";
 
 //Match 4 + PB
-$thirdPrize = 500000;
+$thirdPrize = "50,000";
 
 //Match 4
 $fourthPrize = 100;
@@ -48,20 +32,22 @@ $eighthPrize = 4;
 //Match 0 + PB
 $ninthPrize = 4;
 
+//Drawn Balls
+$ball1 = rand(1,65);
+$ball2 = rand($ball1+1, 66); //Min must be greater than the previous ball, Max must leave space for all the balls
+$ball3 = rand($ball2+1, 67);
+$ball4 = rand($ball3+1, 68);
+$ball5 = rand($ball4+1, 69); 
+$powerball = rand(1,26);
 
-$ball1 = rand(1,1);
-$ball2 = rand($ball1+1, 2); //Min must be greater than the previous ball, Max must leave space for all the balls
-$ball3 = rand($ball2+1, 4);
-$ball4 = rand($ball3+1, 5);
-$ball5 = rand($ball4+1, 6); 
-$powerball = rand(1,2);
+//Player Numbers
+$player_ball1 = rand(1,65);
+$player_ball2  = rand($player_ball1+1, 66); //Min must be greater than the previous ball, Max must leave space for all the balls
+$player_ball3  = rand($player_ball2+1, 67);
+$player_ball4  = rand($player_ball3+1, 68);
+$player_ball5  = rand($player_ball4+1, 69); 
+$player_powerball = rand(1,26);
 
-$player_ball1 = rand(1,1);
-$player_ball2  = rand($player_ball1+1, 2); //Min must be greater than the previous ball, Max must leave space for all the balls
-$player_ball3  = rand($player_ball2+1, 4);
-$player_ball4  = rand($player_ball3+1, 5);
-$player_ball5  = rand($player_ball4+1, 6); 
-$player_powerball = rand(1,2);
 
 // Originally I was going to do conditionals ($ball1 == $player_ball1) || ($ball1 == $player_ball2), etc. 
 // But it ended up being too long because each ball drawn had to be compared to all of the player's balls. 
@@ -78,6 +64,7 @@ $playerMatches = [];
 
 $powerballMatch;
 
+//Text to accompany output
 $matches;
 
 
@@ -89,30 +76,24 @@ if ($powerball === $player_powerball) {
     $powerballMatch = null;
 }
 
-// function matched($ball, $array, $numberMatch) {
-//     $matchPosition = array_keys($array, $ball);
-//     echo "<span class='ball-match'>" . $numberMatch[$matchPosition]. "</span>";
-// }
-
 //  These are all separate statements to see if any of the players numbers match any balls number drawn 
 //  If they do, they are pushed to the array
 if (in_array($player_ball1, $drawing)) {
-    $playerMatches[] = $ball1;
+    $playerMatches[] = $player_ball1;
 }if (in_array($player_ball2, $drawing)) {
-    $playerMatches[] = $ball2;
+    $playerMatches[] = $player_ball2;
 }if (in_array($player_ball3, $drawing)) {
-    $playerMatches[] = $ball3;
+    $playerMatches[] = $player_ball3;
 }if (in_array($player_ball4, $drawing)) {
-    $playerMatches[] = $ball4;
+    $playerMatches[] = $player_ball4;
 }if (in_array($player_ball5, $drawing)) {
-    $playerMatches[] = $ball5;
+    $playerMatches[] = $player_ball5;
 }
-
 
 
 //  Not sure if we're allowed to use functions, 
 //  but I couldn't figure out how to output this unless I used echo.
-//  Ball Numbers that were matched
+//  Numbers that were matched Output
 function thisFunction($playerMatches) {
     $arrlength = count($playerMatches);
     for($x = 0; $x < $arrlength; $x++) {
@@ -123,7 +104,7 @@ function thisFunction($playerMatches) {
 
 //  Figuring out Matches and Prize won
 //  First filter to see if Powerball matches, then if numbers match
-//  This will count the length of the array. 
+//  This will count the length of the array $playerMatches. 
 //  The length of the array determines the number of matches.
 if($powerball === $player_powerball) {
     if(count($playerMatches) == 0) {

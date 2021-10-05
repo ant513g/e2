@@ -1,9 +1,8 @@
-# Project 1
+# Project 1 - PowerBall
 + By: Ana Tolentino Cruz
 + URL: <http://e2p1.anadesign.me>
 
 ## Game planning
-Lottery? Powerball!
 - Jackpot is x million dollars.
 - Odds
 - Cost of one ticket is $2 for player
@@ -31,6 +30,8 @@ Trouble figuring out a way to match the numbers
 
 
 ## Outside resources
-https://www.php.net/
+[https://www.php.net/](PHP)
+[https://edit.nylottery.ny.gov/sites/default/files/2020-03/Powerball_Odds_and_Prizes_0.pdf](Lottery - Powerball Odds and Prizes)
+
 
 ## Notes for instructor

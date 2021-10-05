@@ -2,14 +2,14 @@
 <html lang='en'>
 
 <head>
-    <title>Project 1</title>
+    <title>Project 1 - PowerBall</title>
     <meta charset='utf-8'>
     <link href=data:, rel=icon>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Project 1</h1>
+    <h1>Project 1 - PowerBall</h1>
 
     <h2>Mechanics</h2>
     <ul>
@@ -30,7 +30,7 @@
             <ul>
                 <li>If the player matches all 5 white ball numbers and the PowerBall to the ball numbers drawn, the
                     player wins
-                    the Jackpot!</li>
+                    the Jackpot!(The player wins 68% of the total jackpot).</li>
                 <li>If the player only matches the 5 white ball numbers to the ball numbers drawn, the player wins the
                     second prize
                     of $1,000,000.</li>
@@ -53,6 +53,9 @@
 
     <h2>Results</h2>
     <ul class="results">
+        <li>
+            <h3>Estimated Jackpot: $<?php echo $total?>!</h3>
+        </li>
         <li>
             <h3>Powerball Results: </h3>
             <span class="balls">
