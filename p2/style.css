@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.balls {
+    background-color: azure;
+    border: 1px solid #45545a ;
+}
+
+.powerball,
+.powerball-match  {
+    background-color: red;
+    color: white;
+}
+.ball-match {
+    background-color: seashell;
+}
+
+.ball-match,
+.powerball-match  {
+    border: 3px solid red ;
+}
+.balls, 
+.powerball, 
+.ball-match, 
+.powerball-match {
+    display: inline-block;
+    padding: 1rem;
+    border-radius: 100%;
+    position: relative; 
+    width: 1rem;
+    height: 1rem;
+    text-align: center;
+    margin: 0.15rem;
+}
+.jackpot {
+    color: red;
+
+}
+
+ul.results {
+   margin: auto;
+   list-style: none;
+}
