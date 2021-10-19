@@ -21,7 +21,7 @@
         <h1>Mystery Word Scramble</h1>
 
         <p>Mystery word: <?php echo $shuffled; ?></p>
-        <p>Hint: <?php echo $value; ?></p>
+        <p>Hint: <?php echo $hint; ?></p>
 
         <label for='answer'>Your guess:</label>
         <input type='text' name='answer' id='answer'>

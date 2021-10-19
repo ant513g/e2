@@ -1,12 +1,14 @@
 <?php
 session_start();
 $answer = $_POST["answer"];
-
+$word = $_SESSION['word'];
 $haveAnswer = true;
+
+
 
 if ($answer == "") {
     $haveAnswer = false;
-} elseif ($answer == $rand_words) {
+} elseif ($answer == $word) {
      $correct = true; 
 } else {
     $correct = false; 

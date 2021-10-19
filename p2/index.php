@@ -146,5 +146,3 @@ if($powerball === $player_powerball) {
     $winnings = "None";
 }  
 require 'index-view.php';
-
-?>

@@ -17,30 +17,41 @@ e',
 ];
 
 
-
-$rand_words = array_rand($words, 1);
-
-
-
-$shuffled = str_shuffle($rand_words);
-
-var_dump($rand_words);
-
-if (array_key_exists($rand_words, $words)) {
-    $value = current($rand_words);
-}
-
-
+$useNewWord = true;
+$lastWord = '';
 
 
 if(isset($_SESSION['results'])) {
-    $results = $_SESSION['results'];
 
+    #Extract data
+    $results = $_SESSION['results'];
     $haveAnswer = $results['haveAnswer'];
     $correct = $results['correct'];
+    $lastWord = $_SESSION['word'];
+
+    #If correct, will be true.
+    $useNewWord = $correct;
     
+    #Clear results, refrest
     $_SESSION['results'] = null;
 }
+
+if($useNewWord) {
+    #Prevents the using the same word as the last one
+    while(!isset($word) or $word == $lastWord) {
+        $word = array_rand($words);
+    }
+} else {
+    $word = $lastWord;
+}
+
+#Update text
+$_SESSION['word'] = $word;
+
+# Extract hint, and scramble
+
+$hint = $words[$word];
+$shuffled = str_shuffle($word);
 
 
 require 'index-view.php';
