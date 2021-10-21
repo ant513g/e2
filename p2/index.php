@@ -1,4 +1,24 @@
 <?php 
+
+
+
+
+session_start();
+if(isset($_SESSION['results'])) {
+    $results = $_SESSION['results'];
+
+    $haveAnswer = $results['haveAnswer'];
+    $correct = $results['correct'];
+    
+    $_SESSION['results'] = null;
+}
+
+
+
+
+
+
+
 $cost = 2;
 
 //Prizes
@@ -40,7 +60,7 @@ $ball4 = rand($ball3+1, 68);
 $ball5 = rand($ball4+1, 69); 
 $powerball = rand(1,26);
 
-//Player Numbers
+//Quickpick Numbers Player Numbers
 $player_ball1 = rand(1,65);
 $player_ball2  = rand($player_ball1+1, 66); //Min must be greater than the previous ball, Max must leave space for all the balls
 $player_ball3  = rand($player_ball2+1, 67);
