@@ -21,13 +21,34 @@ body {
 }
 
 .playersChoice {
-    background-color: #ffff00;
+display: flex;
+    flex-wrap: wrap;
     overflow: auto;
 }
-select.balls {
-    outline: none;
+
+/* span.selectNumber input[type="checkbox"] {
+    display: none;
+  } */
+
+span.selectNumber input[type="checkbox"]:checked + span {
+    background-color: gold;
+    color: black;
+  }
+span.selectNumber {
+    background-color: azure;
+    border-radius: 5px;
+    border: 1px solid #45545a;
+    width: 60px;
+    margin: 1rem;
+    border: none;
+    overflow: hidden;
+    text-align: center;
 }
-.balls option {
+span.selectNumber::-moz-focus-inner {
+    border: 0;
+    
+}
+span.selectNumber label {
     width: 60px;
   font-size: 1.2em;
   padding: 10px 0;
@@ -35,9 +56,8 @@ select.balls {
   margin-right: 20px;
   display: inline-block;
   cursor: pointer;
-  border:rgb(204, 204, 0) solid 1px;
-  border-radius: 5px;
-  color: rgb(204, 204, 0);
+ 
+
 }
 .balls, 
 .powerball, 

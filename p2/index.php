@@ -3,21 +3,24 @@
 
 
 
-session_start();
-if(isset($_SESSION['results'])) {
-    $results = $_SESSION['results'];
+// session_start();
+// if(isset($_SESSION['results'])) {
+//     $results = $_SESSION['results'];
 
-    $haveAnswer = $results['haveAnswer'];
-    $correct = $results['correct'];
+//     // $haveAnswer = $results['haveAnswer'];
+//     // $correct = $results['correct'];
     
-    $_SESSION['results'] = null;
+//     $_SESSION['results'] = null;
+
+// }
+
+
+session_start();
+if(isset($_SESSION['playersBalls'])) {
+    $results = $_SESSION['playersBalls'];
+    $_SESSION['playersBalls'] = null;
+
 }
-
-
-
-
-
-
 
 $cost = 2;
 
@@ -74,7 +77,7 @@ $player_powerball = rand(1,26);
 $drawing = [$ball1, $ball2, $ball3, $ball4, $ball5];
 
 //  Player Numbers
-$playerNum = [$player_ball1, $player_ball2, $player_ball3, $player_ball4, $player_ball5];
+// $playerNum = [$player_ball1, $player_ball2, $player_ball3, $player_ball4, $player_ball5];
 
 //  Array of the player numbers that matched the drawn balls
 $playerMatches = [];
