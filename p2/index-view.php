@@ -51,15 +51,8 @@
         </li>
     </ul>
 
-    <script>
-    var limit = 5;
-    $('input.checkboxes').on('change', function(evt) {
-        if ($(this).siblings(':checked').length >= limit) {
-            this.checked = false;
-        }
-    });
-    </script>
-    <form method='POST' action='process.php'>
+
+    <form method='POST' action='results.php'>
         <h1>Choose Numbers</h1>
         <div class='playersChoice'>
             <span class='selectNumber'>
@@ -343,12 +336,85 @@
         </div>
     </form>
 
-    <?php 
-    if(isset($playerNum)) 
-    { ?>
+
+
+
+
+
+
+
+
+    <?php if(isset($results)) { ?>
     <h1>Results</h1>
-    <?php echo $playerNum . "Hi"; 
-}?>
+    <?php if ($haveAnswer == false) { ?>
+    Please enter an answer.
+    <?php } elseif ($correct) { print_r($results); ?>
+    <div class='correct'>You got it correct! :-)</div>
+    <?php } else { print_r($results); ?>
+    <div class='incorrect'> Sorry, that is not correct. :-(
+
+    </div>
+    <?php } }
+     ?>
+
+
+
+    <?php
+    if(isset($results)) { ?>
+    <ul class='results'>
+        <li>
+            <!-- <h3>Estimated Jackpot: $<?php echo $total ?>!</h3> -->
+        </li>
+        <li>
+            <h3>Powerball Results: </h3>
+            <span class='balls'>
+                <?php echo $ball1 ?>
+            </span>
+            <span class='balls'>
+                <?php echo $ball2 ?>
+            </span>
+            <span class='balls'>
+                <?php echo $ball3 ?>
+            </span>
+            <span class='balls'>
+                <?php echo $ball4 ?>
+            </span>
+            <span class='balls'>
+                <?php echo $ball5 ?>
+            </span>
+            <span class='powerball'>
+                <?php echo $powerball?>
+            </span>
+        </li>
+
+        <li>
+            <h3>Matches: <?php echo $matches ?></h3>
+            <?php echo(thisFunction($playerMatches) . $powerballMatch);?>
+
+
+            <!-- <?php #foreach($playerMatches as $match) { ?>
+        <span class='ball-match'>
+            <?php #echo $match ?>
+        </span> -->
+
+
+
+
+        </li>
+        <li>
+            <h3>Winnings: <?php echo $winnings ?></h3>
+        </li>
+        <li>
+            <h3>Player Spent: $<?php echo $cost;?></h3>
+        </li>
+    </ul>
+    <?php } 
+
+
+
+
+
+?>
 
 </body>
 

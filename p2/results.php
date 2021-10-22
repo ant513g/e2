@@ -1,126 +1,27 @@
 <?php
 session_start();
-// $player_ball1 = $_POST['ball1'];
-// $player_ball2 = $_POST["ball2"];
-// $player_ball3 = $_POST["ball3"];
-// $player_ball4 = $_POST["ball4"];
-// $player_ball5 = $_POST["ball5"];
+// $answer = $_POST["answer"];
 
-// var_dump($_SESSION('Hello'));
+$answer = $_POST['playersBalls'];
+
+$haveAnswer = true;
 
 
-
-// $_SESSION['playersBalls[]'] = $_POST['playersBalls[]'];
-
-$playerNum = $_POST['playersBalls'];
-$player_ball1 = $playerNum[0];
-$player_ball2 = $playerNum[1];
-$player_ball3 = $playerNum[2];
-$player_ball4 = $playerNum[3];
-$player_ball5 = $playerNum[4];
+$player_ball1 = $answer[0];
+$player_ball2 = $answer[1];
+$player_ball3 = $answer[2];
+$player_ball4 = $answer[3];
+$player_ball5 = $answer[4];
 $player_powerball = rand(1,26);
 
 
-if(count($playerNum) > 5) {
+if(count($answer) > 5) {
     echo "Please select only 5 numbers!";
-    var_dump($playerNum);
-}else if(count($playerNum) < 5) {
+    var_dump($answer);
+}else if(count($answer) < 5) {
     echo "Please select 5 numbers!";
-    var_dump($playerNum);
+    var_dump($answer);
 }
-
-
-if(!isset($_POST['playersBalls'])) {
-    var_dump('playersBalls is not set!');
-    var_dump($playerNum);
-
-} else {
-    
-    var_dump('playersBalls is set!');
-    var_dump($playerNum);
-    var_dump($player_ball1, $player_ball2, $player_ball3, $player_ball4, $player_ball5);
-}
-
-
-
-
-
-
-
-    // foreach($playerNum as $value) {
-    //     $_SESSION[$value] = null;
-    // };
-
-
-// $player_powerball = $_POST["powerball"];
-
-
-
-//  $_SESSION['results'] = [
-//      'haveAnswer' => $haveAnswer,
-//      'correct' => $correct
-//  ];
-
-
-
-
-
-$cost = 2;
-
-//Prizes
-//I'm not sure how to include a ","
-$total = "450 million";
-
-//Match 5 + PB
-$jackpot= "306 million";
-
-//Match 5
-$secondPrize = "1 million";
-
-//Match 4 + PB
-$thirdPrize = "50,000";
-
-//Match 4
-$fourthPrize = 100;
-
-//Match 3 + PB
-$fifthPrize = 100;
-
-//Match 3
-$sixthPrize = 7;
-
-//Match 2 + PB
-$seventhPrize = 7;
-
-//Match 1 + PB
-$eighthPrize = 4;
-
-//Match 0 + PB
-$ninthPrize = 4;
-
-//Drawn Balls
-// $ball1 = rand(1,65);
-// $ball2 = rand($ball1+1, 66); //Min must be greater than the previous ball, Max must leave space for all the balls
-// $ball3 = rand($ball2+1, 67);
-// $ball4 = rand($ball3+1, 68);
-// $ball5 = rand($ball4+1, 69); 
-// $powerball = rand(1,26);
-
-$ball1 = rand(1,2);
-$ball2 = rand($ball1+1, 4); //Min must be greater than the previous ball, Max must leave space for all the balls
-$ball3 = rand($ball2+1, 5);
-$ball4 = rand($ball3+1, 6);
-$ball5 = rand($ball4+1, 7); 
-$powerball = rand(1,26);
-
-//Quickpick Numbers Player Numbers
-// $player_ball1 = rand(1,65);
-// $player_ball2  = rand($player_ball1+1, 66); //Min must be greater than the previous ball, Max must leave space for all the balls
-// $player_ball3  = rand($player_ball2+1, 67);
-// $player_ball4  = rand($player_ball3+1, 68);
-// $player_ball5  = rand($player_ball4+1, 69); 
-// $player_powerball = rand(1,26);
-
 
 
 
@@ -129,10 +30,9 @@ $powerball = rand(1,26);
 //  Balls Number Drawn
 $drawing = [$ball1, $ball2, $ball3, $ball4, $ball5];
 
-var_dump($drawing);
 
 //  Player Numbers
-// $playerNum = [$player_ball1, $player_ball2, $player_ball3, $player_ball4, $player_ball5];
+$playerNum = [$player_ball1, $player_ball2, $player_ball3, $player_ball4, $player_ball5];
 
 
 
@@ -230,22 +130,30 @@ if($powerball === $player_powerball) {
 }else{
     $matches = "No Match";
     $winnings = "None";
-}  
-
-
-var_dump($playerMatches);
-var_dump($matches);
-var_dump($winnings);
+}
 
 
 
 
-$_SESSION['results'] = [
-    'matches' => $matches,
-    'winnings' => $winnings
-];
 
 
+
+
+
+if ($answer == "") {
+    $haveAnswer = false;
+} elseif ($answer == "pumpkin") {
+     $correct = true; 
+} else {
+    $correct = false; 
+}
+
+
+
+ $_SESSION['results'] = [
+     'haveAnswer' => $haveAnswer,
+     'correct' => $correct
+ ];
 
 
 
