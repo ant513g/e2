@@ -492,7 +492,6 @@
 
         <li>
             <h3>Matches: <?php echo $matches ?></h3>
-            <!-- <?php #echo(thisFunction($playerMatches) . $powerballMatch);?> -->
 
 
             <!-- <?php #foreach($playerMatches as $match) { ?>

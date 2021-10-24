@@ -6,18 +6,32 @@ var_dump($answer);
 
 $haveAnswer = true;
 $errorMessage = false;
+$error = '';
+
+// if ($answer == ' ') {
+//     $errorMessage = true;
+//     $error = 'Please select 5 numbers!';
+// } else
 
 
-if ($answer == ' ') {
-    $errorMessage = true;
-    $error = 'Please select 5 numbers!';
-} elseif(count($answer) > 5) {
+
+if ($answer == "") {
+    $haveAnswer = false;
+} elseif ($answer == "pumpkin") {
+     $correct = true; 
+} else {
+    $correct = false; 
+}
+
+
+
+if(count($answer) > 5) {
     $error = 'Please select only 5 numbers!';
     $errorMessage = true; 
 } else if(count($answer) < 5) {
     $error = 'Please select 5 numbers!';
     $errorMessage = true;
-} else {
+} 
     $errorMessage = false;
     $correct = true;
     $player_ball1 = (int)$answer[0];
@@ -26,7 +40,7 @@ if ($answer == ' ') {
     $player_ball4 = (int)$answer[3];
     $player_ball5 = (int)$answer[4];
     $player_powerball = (int)$_POST['playerPowerball'];
-}
+
 
 
     if ($player_powerball > 1) {
@@ -199,10 +213,10 @@ if ($answer == ' ') {
         $winnings = "None";
     }
 
-    //  $_SESSION['results'] = [
-//      'haveAnswer' => $haveAnswer,
-//      'correct' => $correct
-//  ];
+     $_SESSION['results'] = [
+     'matches' => $matches,
+     'winnings' => $winnings
+ ];
 
 
  require 'results-view.php';
