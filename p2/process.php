@@ -12,31 +12,30 @@ session_start();
 
 // $_SESSION['playersBalls[]'] = $_POST['playersBalls[]'];
 
-$playerNum = $_POST['playersBalls'];
+$playerNum = $_POST['playersNumbers'];
 $player_ball1 = $playerNum[0];
 $player_ball2 = $playerNum[1];
 $player_ball3 = $playerNum[2];
 $player_ball4 = $playerNum[3];
 $player_ball5 = $playerNum[4];
-$player_powerball = rand(1,26);
+$player_powerball = $_POST['playerPowerball'];
 
 
 if(count($playerNum) > 5) {
-    echo "Please select only 5 numbers!";
+    echo 'Please select only 5 numbers!';
     var_dump($playerNum);
 }else if(count($playerNum) < 5) {
-    echo "Please select 5 numbers!";
+    echo 'Please select 5 numbers!';
     var_dump($playerNum);
 }
 
-
-if(!isset($_POST['playersBalls'])) {
-    var_dump('playersBalls is not set!');
+if(!isset($_POST['playersNumbers']))
+{   echo 'playersNumbers is not set!';
     var_dump($playerNum);
 
 } else {
     
-    var_dump('playersBalls is set!');
+    var_dump('playersNumbers is set!');
     var_dump($playerNum);
     var_dump($player_ball1, $player_ball2, $player_ball3, $player_ball4, $player_ball5);
 }
@@ -249,4 +248,4 @@ $_SESSION['results'] = [
 
 
 
-header('Location: index.php');
+// header('Location: index.php');
