@@ -10,20 +10,6 @@
 
 <body>
     <h1>Project 2 - PowerBall</h1>
-    <?php if($errorMessage = false) {
-        if(isset($results)) { ?>
-    <h1>Results</h1>
-    <?php if ($haveAnswer == false) { ?>
-    Please enter an answer.
-    <?php } elseif ($correct) { print_r($results); ?>
-    <div class='correct'>You got it correct! :-)</div>
-    <?php } else { print_r($results); ?>
-    <div class='incorrect'> Sorry, that is not correct. :-(
-
-    </div>
-    <?php } }
-     ?>
-
 
     <?php
     if(!isset($results)) { ?>
@@ -78,8 +64,6 @@
         </li>
         <li>
             <h3>Matches: <?php echo $matches ?></h3>
-            <?php echo(thisFunction($playerMatches) . $powerballMatch);?>
-
 
             <?php foreach ($playerMatches as $match) { ?>
             <span class='ball-match'>
@@ -92,17 +76,15 @@
 
         </li>
         <li>
-            <h3>Winnings: <?php echo $winnings; ?></h3>
+            <h3> Total Winnings: <?php echo $winnings; ?></h3>
         </li>
         <li>
-            <h3>Player Spent: $<?php echo $cost;?></h3>
+            <h3>Game Cost: $<?php echo $cost;?></h3>
         </li>
     </ul>
     <a href="/index.php"> Play Again!</a>
     <?php } 
-}else {
-    echo $error; 
-} ?>
+ ?>
     <a href="/index.php">Try Again!</a>
 
 

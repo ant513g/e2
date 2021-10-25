@@ -52,8 +52,10 @@
     </ul>
 
 
+
     <form method='POST' action='results.php'>
-        <h2>Choose Your Numbers - Select 5</h2>
+        <h2>Select Your Numbers</h2>
+        <h4>Choose 5</h4>
         <div class='playersChoice'>
             <span class='selectNumber'>
                 <input class="checkboxes" type='checkbox' name='playersNumbers[]' value='1'>
@@ -334,6 +336,7 @@
 
         </div>
         <h2>Pick a Powerball Number - Select 1</h2>
+        <h4>Choose 1</h4>
         <div class='playersChoice'>
             <span class='selectPowerball'>
                 <input class="checkboxes" type='checkbox' name='playerPowerball' value='1'>
@@ -447,76 +450,13 @@
 
 
 
-    <?php if(isset($results)) { ?>
-    <h1>Results</h1>
-    <?php if ($haveAnswer == false) { ?>
-    Please enter an answer.
-    <?php } elseif ($correct) { print_r($results); ?>
-    <div class='correct'>You got it correct! :-)</div>
-    <?php } else { print_r($results); ?>
-    <div class='incorrect'> Sorry, that is not correct. :-(
-
-    </div>
-    <?php } }
-     ?>
+    <h3>Winnings: <?php echo $winnings ?></h3>
+    <?php if(isset($_SESSION['results'])) { ?>
+    <h3>Player Spent: $<?php echo $cost; ?></h3>
+    <?php } else { ?> <h3>Player Cost: $<?php echo $cost;?></h3>
+    <?php } ?>
 
 
-
-    <?php
-    if(isset($results)) { ?>
-    <ul class='results'>
-        <li>
-            <!-- <h3>Estimated Jackpot: $<?php echo $total ?>!</h3> -->
-        </li>
-        <li>
-            <h3>Powerball Results: </h3>
-            <span class='balls'>
-                <?php echo $ball1 ?>
-            </span>
-            <span class='balls'>
-                <?php echo $ball2 ?>
-            </span>
-            <span class='balls'>
-                <?php echo $ball3 ?>
-            </span>
-            <span class='balls'>
-                <?php echo $ball4 ?>
-            </span>
-            <span class='balls'>
-                <?php echo $ball5 ?>
-            </span>
-            <span class='powerball'>
-                <?php echo $powerball?>
-            </span>
-        </li>
-
-        <li>
-            <h3>Matches: <?php echo $matches ?></h3>
-
-
-            <!-- <?php #foreach($playerMatches as $match) { ?>
-        <span class='ball-match'>
-            <?php #echo $match ?>
-        </span> -->
-
-
-
-
-        </li>
-        <li>
-            <h3>Winnings: <?php echo $winnings ?></h3>
-        </li>
-        <li>
-            <h3>Player Spent: $<?php echo $cost;?></h3>
-        </li>
-    </ul>
-    <?php } 
-
-
-
-
-
-?>
 
 </body>
 
