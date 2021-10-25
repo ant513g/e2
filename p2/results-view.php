@@ -15,7 +15,19 @@
         echo $errorMessage; ?>
     <h4> You selected: </h4>
     <?php 
-        if(isset($answer)) {
+        if(isset($answer) && isset($player_powerball)) {
+            foreach ($answer as $index) { ?>
+    <span class='balls'>
+        <?php echo $index; ?>
+    </span>
+    <?php };
+            foreach ($player_powerball as $value) { ?>
+    <span class='powerball'>
+        <?php echo $value; ?>
+    </span>
+    <?php };
+        } 
+        elseif(isset($answer)) {
             foreach ($answer as $index) { ?>
     <span class='balls'>
         <?php echo $index; ?>
@@ -70,7 +82,7 @@
     </span>
     <?php } echo $powerballMatch;?>
 
-    <h3> Total Winnings: <?php echo $winnings; ?></h3>
+    <h3> Winnings: <?php echo $winnings; ?></h3>
     <h3>Game Cost: $<?php echo $cost;?></h3>
 
     <a href="/index.php"> Play Again!</a>

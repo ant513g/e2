@@ -3,7 +3,8 @@ session_start();
 
 $errorMessage = '';
 $error = true;
-   
+
+    
 $answer = $_POST['playersNumbers'];
 $player_powerball = $_POST['playerPowerball'];
 
@@ -28,14 +29,20 @@ if($answer == '' || $player_powerball == '') {
 
 
    
-
+//Drawn Balls
+// $ball1 = rand(1,65);
+// $ball2 = rand($ball1+1, 66); //Min must be greater than the previous ball, Max must leave space for all the balls
+// $ball3 = rand($ball2+1, 67);
+// $ball4 = rand($ball3+1, 68);
+// $ball5 = rand($ball4+1, 69); 
+// $powerball = rand(1,26);
 
     $ball1 = rand(1, 2);
     $ball2 = rand($ball1+1, 4); //Min must be greater than the previous ball, Max must leave space for all the balls
     $ball3 = rand($ball2+1, 5);
     $ball4 = rand($ball3+1, 6);
     $ball5 = rand($ball4+1, 7);
-    $powerball = rand(1, 5);
+    $powerball = rand(1, 2);
 
 
     //  Array of computer Number Drawn
@@ -173,7 +180,8 @@ if($answer == '' || $player_powerball == '') {
     $_SESSION['results'] = [
     'matches' => $matches,
     'winnings' => $winnings,
-    'cost' => $cost
+    'cost' => $cost,
+    'error' => $error
 ];
 }
 
