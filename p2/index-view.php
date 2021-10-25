@@ -339,107 +339,107 @@
         <h4>Choose 1</h4>
         <div class='playersChoice'>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='1'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='1'>
                 <label for='1'>1</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='2'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='2'>
                 <label for='2'>2</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='3'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='3'>
                 <label for='3'>3</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='4'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='4'>
                 <label for='4'>4</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='5'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='5'>
                 <label for='5'>5</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='6'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='6'>
                 <label for='6'>6</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='7'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='7'>
                 <label for='7'>7</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='8'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='8'>
                 <label for='8'>8</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='9'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='9'>
                 <label for='9'>9</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='10'>
+                <input class="checkboxes" type='checkbox' nname='playerPowerball[]' value='10'>
                 <label for='10'>10</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='11'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='11'>
                 <label for='11'>11</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='12'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='12'>
                 <label for='12'>12</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='13'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='13'>
                 <label for='13'>13</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='14'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='14'>
                 <label for='14'>14</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='15'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='15'>
                 <label for='15'>15</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='16'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='16'>
                 <label for='16'>16</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='17'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='17'>
                 <label for='17'>17</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='18'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='18'>
                 <label for='18'>18</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='19'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='19'>
                 <label for='19'>19</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='20'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='20'>
                 <label for='20'>20</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='21'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='21'>
                 <label for='21'>21</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='22'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='22'>
                 <label for='22'>22</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='23'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='23'>
                 <label for='23'>23</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='24'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='24'>
                 <label for='24'>24</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='25'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='25'>
                 <label for='25'>25</label>
             </span>
             <span class='selectPowerball'>
-                <input class="checkboxes" type='checkbox' name='playerPowerball' value='26'>
+                <input class="checkboxes" type='checkbox' name='playerPowerball[]' value='26'>
                 <label for='26'>26</label>
             </span>
 
