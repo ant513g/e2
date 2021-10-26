@@ -20,6 +20,7 @@ if($player_numbers == '' || $player_powerball == '') {
 } else {
     $error = false;
 
+    # Player's Selected Numbers
     $player_ball1 = (int)$player_numbers[0];
     $player_ball2 = (int)$player_numbers[1];
     $player_ball3 = (int)$player_numbers[2];
@@ -27,43 +28,38 @@ if($player_numbers == '' || $player_powerball == '') {
     $player_ball5 = (int)$player_numbers[4];
     $player_powerball = (int)$player_powerball[0];
 
-
    
-    //Drawn Balls
+    # Drawn Balls
     $ball1 = rand(1,65);
-    $ball2 = rand($ball1+1, 66); //Min must be greater than the previous ball, Max must leave space for all the balls
+    $ball2 = rand($ball1+1, 66); #  Min must be greater than the previous ball, Max must leave space for all the balls
     $ball3 = rand($ball2+1, 67);
     $ball4 = rand($ball3+1, 68);
     $ball5 = rand($ball4+1, 69); 
     $powerball = rand(1,26);
 
-    //  Array of computer Number Drawn
+    # Array of computer Number Drawn
     $winning_numbers = [$ball1, $ball2, $ball3, $ball4, $ball5];
 
 
-    //  Player Numbers
+    # Player Numbers
     $player_numbers = [$player_ball1, $player_ball2, $player_ball3, $player_ball4, $player_ball5];
     
-    //  Array of the player numbers that matched the drawn balls
+    # Array of the player numbers that matched the drawn balls
     $player_matches = [];
 
 
     $powerball_match;
 
-    //Text to accompany output
+    # Text to accompany output
     $matches_found;
 
+    # Checks to see if there a match for powerball
+    # if not, powerball_match is nothing
+    $powerball_match = ($powerball === $player_powerball) ? $powerball : null;
+   
 
-    //  Checks to see if there a match for powerball
-    if ($powerball === $player_powerball) {
-        $powerball_match = $powerball;
-    } else {
-        //if not, powerball_match is nothing
-        $powerball_match = null;
-    }
-
-    //  These are all separate statements to see if any of the players numbers match any balls number drawn
-    //  If they do, they are pushed to the array
+    # These are all separate statements to see if any of the players numbers match any balls number drawn
+    # If they do, they are pushed to the array
     if (in_array($player_ball1, $winning_numbers)) {
         $player_matches[] = $player_ball1;
     }
@@ -81,47 +77,42 @@ if($player_numbers == '' || $player_powerball == '') {
     }
 
 
-
-
-
-
-
     $cost = 2;
-    //Prizes
+    # Prizes
     $total = number_format(450000000);
 
-    //Match 5 + PB
+    # Match 5 + PB
     $jackpot= number_format(306000000);
 
-    //Match 5
+    # Match 5
     $second_prize = number_format(1000000);
 
-    //Match 4 + PB
+    # Match 4 + PB
     $third_prize = number_format(50000);
   
 
-    //Match 4
+    # Match 4
     $fourth_prize = 100;
 
-    //Match 3 + PB
+    # Match 3 + PB
     $fifth_prize = 100;
 
-    //Match 3
+    # Match 3
     $sixth_prize = 7;
 
-    //Match 2 + PB
+    # Match 2 + PB
     $seventh_prize = 7;
 
-    //Match 1 + PB
+    # Match 1 + PB
     $eighth_prize = 4;
 
-    //Match 0 + PB
+    # Match 0 + PB
     $ninth_prize = 4;
 
-    //  Figuring out Matches and Prize won
-    //  First filter to see if Powerball matches, then if numbers match
-    //  This will count the length of the array $player_matches.
-    //  The length of the array determines the number of matches.
+    #   Figuring out Matches and Prize won
+    #   First filter to see if Powerball matches, then if numbers match
+    #   This will count the length of the array $player_matches.
+    #   The length of the array determines the number of matches.
     if ($powerball === $player_powerball) {
         $correct = true;
         if (count($player_matches) == 0) {
@@ -166,6 +157,7 @@ if($player_numbers == '' || $player_powerball == '') {
         $winnings = "None";
     }
 
+  
     $_SESSION['results'] = [
     'matches-found' => $matches_found,
     'winnings' => $winnings,
