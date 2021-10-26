@@ -1,30 +1,45 @@
 <?php
 session_start();
 
-$errorMessage = '';
+$error_message = '';
 $error = true;
 
-    
-$answer = $_POST['playersNumbers'];
-$player_powerball = $_POST['playerPowerball'];
 
-if($answer == '' || $player_powerball == '') {
-    $errorMessage = 'Please select 5 numbers and 1 Powerball';
+if(isset($_POST['player-numbers'])) {
+    $player_numbers = $_POST['player-numbers'];
+    $error = false;
+    var_dump($player_numbers);
+} else { 
+    
+    var_dump($player_numbers);
+}
+    
+
+if(isset($_POST['player-powerball'])) {
+    $player_powerball = $_POST['player-powerball'];
+    $error = false;
+    var_dump($player_powerball);
+} else { 
+    var_dump($player_powerball);
+}
+
+if($player_numbers == '' || $player_powerball == '') {
+    $error_message = 'Please select 5 numbers and 1 Powerball';
     $error = true;
-}elseif(count($answer) > 5 || count($player_powerball) > 1){
-    $errorMessage = 'Please select only 5 numbers and 1 powerball!';
+}elseif(count($player_numbers) > 5 || count($player_powerball) > 1){
+    $error_message = 'Please select only 5 numbers and 1 Powerball!';
     $error = true; 
-}elseif(count($answer) < 5 || count($player_powerball) < 1) {
-    $errorMessage = 'Please select 5 numbers and 1 Powerball';
+}elseif(count($player_numbers) < 5 || count($player_powerball) < 1) {
+    $error_message = 'Please select 5 numbers and 1 Powerball';
     $error = true;
 } else {
     $error = false;
 
-    $player_ball1 = (int)$answer[0];
-    $player_ball2 = (int)$answer[1];
-    $player_ball3 = (int)$answer[2];
-    $player_ball4 = (int)$answer[3];
-    $player_ball5 = (int)$answer[4];
+    $player_ball1 = (int)$player_numbers[0];
+    $player_ball2 = (int)$player_numbers[1];
+    $player_ball3 = (int)$player_numbers[2];
+    $player_ball4 = (int)$player_numbers[3];
+    $player_ball5 = (int)$player_numbers[4];
     $player_powerball = (int)$player_powerball[0];
 
 
@@ -46,11 +61,11 @@ if($answer == '' || $player_powerball == '') {
 
 
     //  Array of computer Number Drawn
-    $drawing = [$ball1, $ball2, $ball3, $ball4, $ball5];
+    $winning_numbers = [$ball1, $ball2, $ball3, $ball4, $ball5];
 
 
     //  Player Numbers
-    $playerNum = [$player_ball1, $player_ball2, $player_ball3, $player_ball4, $player_ball5];
+    $player_numbers = [$player_ball1, $player_ball2, $player_ball3, $player_ball4, $player_ball5];
     
     //  Array of the player numbers that matched the drawn balls
     $playerMatches = [];
@@ -72,19 +87,19 @@ if($answer == '' || $player_powerball == '') {
 
     //  These are all separate statements to see if any of the players numbers match any balls number drawn
     //  If they do, they are pushed to the array
-    if (in_array($player_ball1, $drawing)) {
+    if (in_array($player_ball1, $winning_numbers)) {
         $playerMatches[] = $player_ball1;
     }
-    if (in_array($player_ball2, $drawing)) {
+    if (in_array($player_ball2, $winning_numbers)) {
         $playerMatches[] = $player_ball2;
     }
-    if (in_array($player_ball3, $drawing)) {
+    if (in_array($player_ball3, $winning_numbers)) {
         $playerMatches[] = $player_ball3;
     }
-    if (in_array($player_ball4, $drawing)) {
+    if (in_array($player_ball4, $winning_numbers)) {
         $playerMatches[] = $player_ball4;
     }
-    if (in_array($player_ball5, $drawing)) {
+    if (in_array($player_ball5, $winning_numbers)) {
         $playerMatches[] = $player_ball5;
     }
 

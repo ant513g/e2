@@ -2,63 +2,72 @@
 <html lang='en'>
 
 <head>
-    <title>Project 2 - PowerBall Results</title>
+    <title>Project 2 - Powerball Results</title>
     <meta charset='utf-8'>
     <link href=data:, rel=icon>
     <link rel='stylesheet' href='style.css'>
 </head>
 
 <body>
-    <h1>Project 2 - PowerBall</h1>
-    <?php
-    if($error) {
-        echo $errorMessage; ?>
-    <h4> You selected: </h4>
+    <h1>Project 2 - Powerball</h1>
+
+
     <?php 
-        if(isset($answer) && isset($player_powerball)) {
-            foreach ($answer as $index) { ?>
-    <span class='balls'>
+    #Checks to see if theres an error with the form
+    if ($error) { ?>
+
+    <h3><?php echo $error_message; ?> </h3>
+    <h4> You selected: </h4>
+    <?php
+    #Checks to see if player numbers and powerball are set, if not, then nothing
+    if (!isset($player_numbers) && !isset($player_powerball)) { ?>
+    <h4>NOTHING!</h4><?php
+    } elseif (isset($player_numbers) && isset($player_powerball)) {
+        foreach ($player_numbers as $index) { ?>
+    <span class='ball'>
         <?php echo $index; ?>
     </span>
-    <?php };
-            foreach ($player_powerball as $value) { ?>
+    <?php
+         };
+        foreach ($player_powerball as $value) { ?>
     <span class='powerball'>
         <?php echo $value; ?>
     </span>
-    <?php };
-        } 
-        elseif(isset($answer)) {
-            foreach ($answer as $index) { ?>
-    <span class='balls'>
+    <?php
+        }
+    } elseif (isset($player_numbers)) {
+        foreach ($player_numbers as $index) { ?>
+    <span class='ball'>
         <?php echo $index; ?>
     </span>
-    <?php };
-        } 
-        elseif(isset($player_powerball)) {
-            foreach ($player_powerball as $value) { ?>
+    <?php
+        };
+    } elseif (isset($player_powerball)) {
+        foreach ($player_powerball as $value) { ?>
     <span class='powerball'>
         <?php echo $value; ?>
     </span>
-    <?php };
-             } else { ?>
+    <?php
+        };
+    } else { ?>
     <h4> NOTHING!</h4>
     <?php
-            } 
-        ?>
+            
+    }?>
 
 
-    <br>
+    <br><br>
     <a href="/index.php"> Try Again!</a>
     <?php
-    }
-    elseif(!$error)
-     { ?>
+} elseif (!$error){ ?>
+
+
     <h3>Estimated Jackpot: $<?php echo $total ?>!</h3>
 
     <h3>Powerball Results: </h3>
-    <?php foreach ($drawing as $balls) { ?>
-    <span class='balls'>
-        <?php echo $balls; ?>
+    <?php foreach ($winning_numbers as $ball) { ?>
+    <span class='ball'>
+        <?php echo $ball; ?>
     </span>
     <?php } ?>
     <span class='powerball'>
@@ -66,8 +75,8 @@
     </span>
 
     <h3>Your Picks: </h3>
-    <?php foreach ($playerNum as $num) { ?>
-    <span class='balls'>
+    <?php foreach ($player_numbers as $num) { ?>
+    <span class='ball'>
         <?php echo $num; ?>
     </span>
     <?php } ?>
@@ -84,11 +93,10 @@
 
     <h3> Winnings: <?php echo $winnings; ?></h3>
     <h3>Game Cost: $<?php echo $cost;?></h3>
-
+    <br>
     <a href="/index.php"> Play Again!</a>
 
-    <?php 
-    }  ?>
+    <?php } ?>
 
 </body>
 
