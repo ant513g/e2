@@ -14,3 +14,5 @@
 
 I was debating whether or not I should use `!isset ();` instead of `player_powerball == ‘’;`, but if I did use isset, the variable would be invalid and caused issues in the rest of the code.
 
+I also wanted to figure out a way to make cost increase after each play, as well as add the total winnings together. I couldn't figure out a way to adjust it on the index page after each play. I thought somehow using`$_SESSIONS`, but I coudln't figure it out.
+
