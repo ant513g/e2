@@ -4,7 +4,7 @@ session_start();
 
 if(isset($_SESSION['results'])) {
     $results = $_SESSION['results'];
-    $matches = $results['matches'];
+    $matches_found = $results['matches-found'];
     $winnings = $results['winnings'];
     $error = $results['error'];
     $cost = $results['cost'];

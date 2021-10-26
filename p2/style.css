@@ -42,10 +42,6 @@ body {
     flex-wrap: wrap;
     overflow: auto;
 }
-input[type='checkbox']:checked {
-    background-color: black;
-
-}
 span.select-number,
 span.select-powerball {  
     border-radius: 5px;
@@ -61,11 +57,6 @@ span.select-number {
 }
 span.select-powerball {
     background-color: red;
-}
-
-span.select-number::-moz-focus-inner {
-    border: 0;
-    
 }
 span.select-number label, 
 span.select-powerball label {

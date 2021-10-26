@@ -4,24 +4,9 @@ session_start();
 $error_message = '';
 $error = true;
 
+$player_numbers = $_POST['player-numbers'] ?? '';
+$player_powerball = $_POST['player-powerball'] ?? '';
 
-if(isset($_POST['player-numbers'])) {
-    $player_numbers = $_POST['player-numbers'];
-    $error = false;
-    var_dump($player_numbers);
-} else { 
-    
-    var_dump($player_numbers);
-}
-    
-
-if(isset($_POST['player-powerball'])) {
-    $player_powerball = $_POST['player-powerball'];
-    $error = false;
-    var_dump($player_powerball);
-} else { 
-    var_dump($player_powerball);
-}
 
 if($player_numbers == '' || $player_powerball == '') {
     $error_message = 'Please select 5 numbers and 1 Powerball';
@@ -44,21 +29,13 @@ if($player_numbers == '' || $player_powerball == '') {
 
 
    
-//Drawn Balls
-// $ball1 = rand(1,65);
-// $ball2 = rand($ball1+1, 66); //Min must be greater than the previous ball, Max must leave space for all the balls
-// $ball3 = rand($ball2+1, 67);
-// $ball4 = rand($ball3+1, 68);
-// $ball5 = rand($ball4+1, 69); 
-// $powerball = rand(1,26);
-
-    $ball1 = rand(1, 2);
-    $ball2 = rand($ball1+1, 4); //Min must be greater than the previous ball, Max must leave space for all the balls
-    $ball3 = rand($ball2+1, 5);
-    $ball4 = rand($ball3+1, 6);
-    $ball5 = rand($ball4+1, 7);
-    $powerball = rand(1, 2);
-
+    //Drawn Balls
+    $ball1 = rand(1,65);
+    $ball2 = rand($ball1+1, 66); //Min must be greater than the previous ball, Max must leave space for all the balls
+    $ball3 = rand($ball2+1, 67);
+    $ball4 = rand($ball3+1, 68);
+    $ball5 = rand($ball4+1, 69); 
+    $powerball = rand(1,26);
 
     //  Array of computer Number Drawn
     $winning_numbers = [$ball1, $ball2, $ball3, $ball4, $ball5];
@@ -68,39 +45,39 @@ if($player_numbers == '' || $player_powerball == '') {
     $player_numbers = [$player_ball1, $player_ball2, $player_ball3, $player_ball4, $player_ball5];
     
     //  Array of the player numbers that matched the drawn balls
-    $playerMatches = [];
+    $player_matches = [];
 
 
-    $powerballMatch;
+    $powerball_match;
 
     //Text to accompany output
-    $matches;
+    $matches_found;
 
 
     //  Checks to see if there a match for powerball
     if ($powerball === $player_powerball) {
-        $powerballMatch = "<span class='powerball-match'>" . $powerball . "</span>";
+        $powerball_match = $powerball;
     } else {
-        //if not, powerballMatch is nothing
-        $powerballMatch = null;
+        //if not, powerball_match is nothing
+        $powerball_match = null;
     }
 
     //  These are all separate statements to see if any of the players numbers match any balls number drawn
     //  If they do, they are pushed to the array
     if (in_array($player_ball1, $winning_numbers)) {
-        $playerMatches[] = $player_ball1;
+        $player_matches[] = $player_ball1;
     }
     if (in_array($player_ball2, $winning_numbers)) {
-        $playerMatches[] = $player_ball2;
+        $player_matches[] = $player_ball2;
     }
     if (in_array($player_ball3, $winning_numbers)) {
-        $playerMatches[] = $player_ball3;
+        $player_matches[] = $player_ball3;
     }
     if (in_array($player_ball4, $winning_numbers)) {
-        $playerMatches[] = $player_ball4;
+        $player_matches[] = $player_ball4;
     }
     if (in_array($player_ball5, $winning_numbers)) {
-        $playerMatches[] = $player_ball5;
+        $player_matches[] = $player_ball5;
     }
 
 
@@ -111,89 +88,86 @@ if($player_numbers == '' || $player_powerball == '') {
 
     $cost = 2;
     //Prizes
-    $total = '450,000,000';
+    $total = number_format(450000000);
 
     //Match 5 + PB
-    $jackpot= '306 million';
+    $jackpot= number_format(306000000);
 
     //Match 5
-    $secondPrize = '1 million';
+    $second_prize = number_format(1000000);
 
     //Match 4 + PB
-    $thirdPrize = 50000;
+    $third_prize = number_format(50000);
+  
 
     //Match 4
-    $fourthPrize = 100;
+    $fourth_prize = 100;
 
     //Match 3 + PB
-    $fifthPrize = 100;
+    $fifth_prize = 100;
 
     //Match 3
-    $sixthPrize = 7;
+    $sixth_prize = 7;
 
     //Match 2 + PB
-    $seventhPrize = 7;
+    $seventh_prize = 7;
 
     //Match 1 + PB
-    $eighthPrize = 4;
+    $eighth_prize = 4;
 
     //Match 0 + PB
-    $ninthPrize = 4;
-
-
-
-
+    $ninth_prize = 4;
 
     //  Figuring out Matches and Prize won
     //  First filter to see if Powerball matches, then if numbers match
-    //  This will count the length of the array $playerMatches.
+    //  This will count the length of the array $player_matches.
     //  The length of the array determines the number of matches.
     if ($powerball === $player_powerball) {
         $correct = true;
-        if (count($playerMatches) == 0) {
-            $matches = "No Match + Powerball";
-            $winnings = "$" . $ninthPrize;
-        } elseif (count($playerMatches) == 1) {
-            $matches = "One Match + Powerball";
-            $winnings = "$" . $eighthPrize;
-        } elseif (count($playerMatches) == 2) {
-            $matches = "Two Matches + Powerball";
-            $winnings = "$" . $seventhPrize;
-        } elseif (count($playerMatches) == 3) {
-            $matches = "Three Matches + Powerball";
-            $winnings = "$" . $fifthPrize;
-        } elseif (count($playerMatches) == 4) {
-            $matches = "Four Matches + Powerball";
-            $winnings = "$" . $thirdPrize;
-        } elseif (count($playerMatches) == 5) {
-            $matches = "Five Matches + Powerball <br> <br> <span class='jackpot'> YOU HAVE WON THE JACKPOT!</span>";
+        if (count($player_matches) == 0) {
+            $matches_found = "No Match + Powerball";
+            $winnings = "$" . $ninth_prize;
+        } elseif (count($player_matches) == 1) {
+            $matches_found = "One Match + Powerball";
+            $winnings = "$" . $eighth_prize;
+        } elseif (count($player_matches) == 2) {
+            $matches_found = "Two Matches + Powerball";
+            $winnings = "$" . $seventh_prize;
+        } elseif (count($player_matches) == 3) {
+            $matches_found = "Three Matches + Powerball";
+            $winnings = "$" . $fifth_prize;
+        } elseif (count($player_matches) == 4) {
+            $matches_found = "Four Matches + Powerball";
+            $winnings = "$" . $third_prize;
+        } elseif (count($player_matches) == 5) {
+            $matches_found = 'jackpot';
             $winnings = "JACKPOT $" . $jackpot;
         }
-    } elseif (count($playerMatches) == 0) {
-        $matches = "No Match";
+    } elseif (count($player_matches) == 0) {
+        $matches_found = "No Match";
         $winnings = "None";
-    } elseif (count($playerMatches) == 1) {
-        $matches = "One Match";
+    } elseif (count($player_matches) == 1) {
+        $matches_found = "One Match";
         $winnings = "None";
-    } elseif (count($playerMatches) == 2) {
-        $matches = "Two Matches";
+    } elseif (count($player_matches) == 2) {
+        $matches_found = "Two Matches";
         $winnings = "None";
-    } elseif (count($playerMatches) == 3) {
-        $matches = "Three Matches";
-        $winnings = "$" . $sixthPrize;
-    } elseif (count($playerMatches) == 4) {
-        $matches = "Four Matches";
-        $winnings = "$" . $fourthPrize;
-    } elseif (count($playerMatches) == 5) {
-        $matches = "Five Matches";
-        $winnings = "$" . $secondPrize;
+    } elseif (count($player_matches) == 3) {
+        $matches_found = "Three Matches";
+        $winnings = "$" . $sixth_prize;
+    } elseif (count($player_matches) == 4) {
+        $matches_found = "Four Matches";
+        $winnings = "$" . $fourth_prize;
+    } elseif (count($player_matches) == 5) {
+        $matches_found = "Five Matches";
+        $winnings = "$" . $second_prize;
     } else {
-        $matches = "No Match";
+        $matches_found = "No Match";
         $winnings = "None";
     }
 
     $_SESSION['results'] = [
-    'matches' => $matches,
+    'matches-found' => $matches_found,
     'winnings' => $winnings,
     'cost' => $cost,
     'error' => $error
@@ -201,4 +175,3 @@ if($player_numbers == '' || $player_powerball == '') {
 }
 
  require 'results-view.php';
-// header('Location: index.php');
