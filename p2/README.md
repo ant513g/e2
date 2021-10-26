@@ -4,7 +4,9 @@
 
 ## Outside resources
 [Inter via Google Fonts](https://fonts.google.com/specimen/Inter?category=Sans+Serif)
+
 [Powerball](https://www.powerball.com/games/home)
+
 [Lottery - Powerball Odds and Prizes](https://edit.nylottery.ny.gov/sites/default/files/2020-03/Powerball_Odds_and_Prizes_0.pdf)
 
 
