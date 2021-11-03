@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+
 class Debug
 {
     public static function dump($data)
