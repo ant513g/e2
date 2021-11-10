@@ -1,9 +1,23 @@
 <?php
-require __DIR__.'/vendor/autoload.php';
+// require __DIR__.'/vendor/autoload.php';
+session_start();
 
 use RPS\Game;
-use App\Debug;
 
 $game = new Game();
 
-Debug::dump($game->play('scissors'));
+$moves = ['rock', 'paper', 'scissos'];
+
+$lastGame = $_SESSION['results']['lastGame'] ?? null;
+$recentGames = $_SESSION['result']['recentGames'] ?? null;
+
+$_SESSION['results']['lastGame'] = null;
+
+
+// use App\Debug;
+
+
+
+// Debug::dump($game->play('scissors'));
+
+require 'index-view.php';
