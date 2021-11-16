@@ -27,9 +27,15 @@ class ProductsController extends Controller
 
         $product = $this->productsObj->getBySku($sku);
 
+        // if(is_null($product)) {
+        //     return $this->app->view('errors/404');
+        // }
         if(is_null($product)) {
-            return $this->app->view('errors/404');
+            return $this->app->view('products/missing');
         }
+        // if(is_null($sku)) {
+        //     return $this->app->view('products/missing');
+        // }
 
         return $this->app->view('products/show', ['product' => $product]);
     }
