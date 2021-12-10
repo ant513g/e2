@@ -5,14 +5,15 @@
 @endsection
 
 @section('content')
-  <h2>Project 3 - Powerball</h2>
-  <a href='/winnings'> <button>My Winnings!</button></a>
-  <a href='/results'> <button>View Results!</button></a>
+  <h1><b>${{ $total }}</b></h1>
+  <h1>Project 3 - Powerball</h1>
+  <div class='flex-center'>
+    <a href='/winnings'> <button>My Winnings!</button></a>
+    <a href='/results'> <button>View Results!</button></a>
+  </div>
   
     
-    @if ($gameSaved)
-        <div class='alert alert-success'>Thank you, your product was added!</div>
-    @endif
+   
 
 
 
@@ -33,17 +34,21 @@
         </li>
            
       </ul>
-      <a href='/prizes'> <button>View Prizes!</button></a>
+      <div class='flex-center'>
+        <a href='/prizes'> <button>View Prizes!</button></a>
+      </div>
   </section>
 
-  
 
 
-  <section class='border'>
+
+    
+ @if ($play)
+   <section class='border'>
         <form method='POST' action='/submitted'>
             <h2>Select Your Numbers</h2>
             <h4>Choose 5</h4>
-            <div class='flex'>
+            <div class='container'>
                 <span class='select-number'>
                     <input class="checkboxes" type='checkbox' name='player-numbers[]' value='1'>
                     <label for='1'>1</label>
@@ -325,190 +330,130 @@
             <hr>
             <h2>Pick a Powerball Number</h2>
             <h4>Choose 1</h4>
-            <div class='flex'>
-                <span class='select-powerball'>
+            <div class='container'>
+                <div class='col select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='1'>
-                    <label for='1'>1
-                    </label>
-
-                </span>
-                <span class='select-powerball'>
+                    <label for='1'>1</label>
+                </div>
+                <div class='col select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='2'>
                     <label for='2'>2</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='col select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='3'>
                     <label for='3'>3</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='col select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='4'>
                     <label for='4'>4</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='col select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='5'>
                     <label for='5'>5</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='col select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='6'>
                     <label for='6'>6</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='col select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='7'>
                     <label for='7'>7</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='col select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='8'>
                     <label for='8'>8</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='col select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='9'>
                     <label for='9'>9</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='col select-powerball'>
                     <input class='check-power' type='checkbox' nname='player-powerball[]' value='10'>
                     <label for='10'>10</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='11'>
                     <label for='11'>11</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='12'>
                     <label for='12'>12</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='13'>
                     <label for='13'>13</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='14'>
                     <label for='14'>14</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='15'>
                     <label for='15'>15</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='16'>
                     <label for='16'>16</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='17'>
                     <label for='17'>17</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='18'>
                     <label for='18'>18</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='19'>
                     <label for='19'>19</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='20'>
                     <label for='20'>20</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='21'>
                     <label for='21'>21</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='22'>
                     <label for='22'>22</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='23'>
                     <label for='23'>23</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='24'>
                     <label for='24'>24</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='25'>
                     <label for='25'>25</label>
-                </span>
-                <span class='select-powerball'>
+                </div>
+                <div class='select-powerball'>
                     <input class='check-power' type='checkbox' name='player-powerball[]' value='26'>
                     <label for='26'>26</label>
-                </span>
-
+                </div>
             </div>
             <br>
             <div class='flex'>
                 <button type='submit'>Submit</button>
             </div>
-
         </form>
-
     </section>
+ @endif
 
-  <section>
 
-    @if (!$winnings)
-          You haven't won anything yet!
-    @endif
 
-    @if (!$cost)
-        You haven't played yet!
-    @else 
-    {{ $cost }}
-    @endif
 
-  </section>
+  
 
-   
-    {{-- Checks to see if theres an error with the form --}}
-    @if ($error)
-     <section class='border'>
-        <h3>$error_message; </h3>
-        <h4> You selected: </h4>
-        
-        {{-- Checks to see if player numbers and powerball are '', if not, then nothing --}}
-        @if ($player_numbers == '' && $player_powerball == '') 
-        <h4>NOTHING!</h4>
-        @elseif ($player_numbers !== '' && $player_powerball !== '') 
-            @foreach ($player_numbers as $index)
-                <span class='ball'>
-                   {{$index}}
-                </span>
-            @endforeach
-            @foreach ($player_powerball as $value)
-                <span class='powerball'>
-                   {{$value}}
-                </span>
-            @endforeach
-        @elseif ($player_numbers !== '') 
-            @foreach ($player_numbers as $index) ?>
-                <span class='ball'>
-                   {{$index}}
-                </span>
-             @endforeach
-        @elseif ($player_powerball !== '') 
-            @foreach ($player_powerball as $value) 
-                <span class='powerball'>
-                     {{$value}}
-                </span>
-            @endforeach
-        @else
-            <h4> NOTHING!</h4>
-        @endif
-      
-
-      
-        <br>
-        <div class='flex'>
-            <a href='/index.php'> <button>Play Again!</button></a>
-        </div>
-    </section>
-
-   {{-- @elseif (!$error)
-
+@if ($gameSaved)
     <section class='border'>
-
         <h2>Estimated Jackpot: ${{ $total }}!</h2>
 
-        <h2>Powerball Results: </h2>
+        <h2>Powerball Results:</h2>
         <div class='flex'>
             @foreach ($winning_numbers as $ball) 
                 <span class='ball winning'>
@@ -517,54 +462,79 @@
             @endforeach
             
             <span class='powerball winning'>
-               {{$powerball}}
+                {{$powerball}}
             </span>
         </div>
         <hr>
         <h2>Your Picks: </h2>
         <div class='flex'>
-           @foreach ($player_numbers as $num) { ?>
-            <span class='ball'>
-               {{$num;}}
-            </span>
-           @endforeach
+            @foreach ($player_numbers as $num) 
+                <span class='ball'>
+                {{$num}}
+                </span>
+            @endforeach
             <span class='powerball'>
-               {{$player_powerball}}
+                {{$player_powerball}}
             </span>
         </div>
         <br>
+
+
+        
         <h2>Matches: 
             @if($matches_found === 'jackpot')
-            Five Matches + Powerball <br> <br> <span class='jackpot'> YOU HAVE WON THE JACKPOT!</span>
+                Five Matches + Powerball <br> <br> <span class='jackpot'> YOU HAVE WON THE JACKPOT!</span>
             @else 
             {{ $matches_found}}
             @endif
         </h2>
+
         <div class='flex'>
-            @foreach ($player_matches as $match) { ?>
+            @foreach ($player_matches as $match)
             <span class='ball match'>
-              {{$match}}
+                {{$match}}
             </span>
             @endforeach
+
             @if($powerball_match)
-            <span class='powerball match'>
-                {{$powerball}}
-            </span>
+                <span class='powerball match'>
+                    {{$powerball}}
+                </span>
             @endif
         </div>
-    
 
-    </section>--}}
+    </section>
 
-    @endif 
+    <div class='flex'>
+         <a href='/play'> <button>Play Again!</button></a>
+    </div>
+@endif
 
 
-     {{-- <section>
-        <h2> Winnings:{{ $winnings }}</h2>
-        <br>
-        <h2>Game Cost: {{$cost}}</h2>
-        <div class='flex'>
-            <a href='/index.php'> <button>Play Again!</button></a>
-        </div>
-    </section> --}}
+
+  
+@if (!$play)
+    <div class='flex-center'>
+        <a href='/play'> <button>Play!</button></a>
+    </div>
+@endif
+  
+  
+  <section>
+    <h2>Winnings:</h2>
+    @if (!$winnings)
+        You haven't won anything yet!
+    @elseif ($winnings) 
+        {{ $winnings }}
+    @endif
+
+    @if (!$cost)
+        You haven't played yet!
+    @elseif($cost)
+        {{ $cost }}
+    @endif
+
+  </section>
+
+
 @endsection

@@ -9,4 +9,5 @@ return [
     '/submitted' => ['AppController', 'submitted'],
     '/results' => ['AppController', 'results'],
     '/winnings' => ['AppController', 'winnings'],
+    '/play' => ['AppController', 'play'],
 ];

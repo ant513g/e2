@@ -8,70 +8,93 @@ class AppController extends Controller
      */
     public function index()
     {
-        // $error_message = '';
-        // $error = true;
+        $gameSaved = $this->app->old('gameSaved');
+        $play = $this->app->old('play');
         $cost = '';
+
+        
+        
+        $winnings = $this->app->old('winnings');
+        $player_numbers = $this->app->old('player_numbers');
+        $player_powerball = $this->app->old('player_powerball');
+        $winning_numbers = $this->app->old('winning_numbers');
+        $powerball = $this->app->old('powerball');
+        $player_matches = $this->app->old('player_matches');
+        $powerball_match = $this->app->old('powerball_match');
+        $matches_found = $this->app->old('matches_found');
+
         $matches = 1;
-        $winnings =  null;
-        dump($cost);
-        
-        // $player_numbers = $_POST['player-numbers'] ?? '';
-        // $player_powerball = $_POST['player-powerball'] ?? '';   
 
-        // if(isset($_SESSION['results'])) {
-        //     $results = $_SESSION['results'];
-        //     $matches_found = $results['matches-found'];
-        //     $winnings = $results['winnings'];
-        //     $error = $results['error'];
-        //     $cost = $results['cost'];
-          
-        //     $_SESSION['results'] = null;
-            
-        // } else {
-            
-        //     $_SESSION['results'] = null;
-        // }
-        
-
+        $total = number_format(450000000);
+        $jackpot= number_format(306000000);
+        $second_prize = number_format(1000000);
+        $third_prize = number_format(50000);
+        $fourth_prize = 100;
+        $fifth_prize = 100;
+        $sixth_prize = 7;
+        $seventh_prize = 7;
+        $eighth_prize = 4;
+        $ninth_prize = 4;
        
+        return $this->app->view('index', [
+            'gameSaved' => $gameSaved,
+            'play' => $play,
+            'cost' => $cost,
+            'winnings' => $winnings,
+            'total' => $total,
+            'submitted' => false,
+            'player_numbers' => $player_numbers,
+            'player_powerball' => $player_powerball,
+            'winning_numbers' => $winning_numbers,
+            'powerball' => $powerball,
+            'player_matches' => $player_matches,
+            'powerball_match' => $powerball_match,
+            'matches_found' =>  $matches_found,
+        ]);
+    }
 
-        $player_numbers = $this->app->input('player-numbers[]');
+    public function prizes()
+    {
+        $gameSaved = $this->app->old('gameSaved');
+        
+        return $this->app->view('/prizes', [
+            'gameSaved' => $gameSaved,
+        ]);
+    }
+
+    public function submitted()
+    {
+        $player_numbers = $this->app->input('player-numbers');
         $player_powerball = $this->app->input('player-powerball');
-        dump($player_numbers);
 
          # Player's Selected Numbers
-        // $player_ball1 = (int)$player_numbers[0];
-        // $player_ball2 = (int)$player_numbers[1];
-        // $player_ball3 = (int)$player_numbers[2];
-        // $player_ball4 = (int)$player_numbers[3];
-        // $player_ball5 = (int)$player_numbers[4];
-        // $player_powerball = (int)$player_powerball[0];
+        $player_ball1 = (int)$player_numbers[0];
+        $player_ball2 = (int)$player_numbers[1];
+        $player_ball3 = (int)$player_numbers[2];
+        $player_ball4 = (int)$player_numbers[3];
+        $player_ball5 = (int)$player_numbers[4];
+        $player_powerball = (int)$player_powerball[0];
 
-
-        $player_ball1 = 1;
-        $player_ball2 = 2;
-        $player_ball3 = 3;
-        $player_ball4 = 4;
-        $player_ball5 = 5;
-        $player_powerball = 1;
-   
         # Drawn Balls
-        $ball1 = rand(1,65);
-        $ball2 = rand($ball1+1, 66); #  Min must be greater than the previous ball, Max must leave space for all the balls
-        $ball3 = rand($ball2+1, 67);
-        $ball4 = rand($ball3+1, 68);
-        $ball5 = rand($ball4+1, 69); 
-        $powerball = rand(1,26);
-
+        // $ball1 = rand(1,65);
+        // $ball2 = rand($ball1+1, 66); #  Min must be greater than the previous ball, Max must leave space for all the balls
+        // $ball3 = rand($ball2+1, 67);
+        // $ball4 = rand($ball3+1, 68);
+        // $ball5 = rand($ball4+1, 69); 
+        // $powerball = rand(1,26);
+        $ball1 = rand(1,2);
+        $ball2 = rand($ball1+1, 3); #  Min must be greater than the previous ball, Max must leave space for all the balls
+        $ball3 = rand($ball2+1, 4);
+        $ball4 = rand($ball3+1, 5);
+        $ball5 = rand($ball4+1, 5); 
+        $powerball = rand(1,2);
 
         # Array of computer Number Drawn
         $winning_numbers = [$ball1, $ball2, $ball3, $ball4, $ball5];
-        dump($winning_numbers);
-
-        # Player Numbers
         
+        # Player Numbers
         $player_numbers = [$player_ball1, $player_ball2, $player_ball3, $player_ball4, $player_ball5];
-        dump($player_numbers);
+       
         # Array of the player numbers that matched the drawn balls
         $player_matches = [];
 
@@ -102,36 +125,16 @@ class AppController extends Controller
             $player_matches[] = $player_ball5;
         }
 
-
-        $cost = 2;
         # Prizes
         $total = number_format(450000000);
-
-        # Match 5 + PB
         $jackpot= number_format(306000000);
-
-        # Match 5
         $second_prize = number_format(1000000);
-
-        # Match 4 + PB
         $third_prize = number_format(50000);
-    
-        # Match 4
         $fourth_prize = 100;
-
-        # Match 3 + PB
         $fifth_prize = 100;
-
-        # Match 3
         $sixth_prize = 7;
-
-        # Match 2 + PB
         $seventh_prize = 7;
-
-        # Match 1 + PB
         $eighth_prize = 4;
-
-        # Match 0 + PB
         $ninth_prize = 4;
 
         #   Figuring out Matches and Prize won
@@ -182,41 +185,31 @@ class AppController extends Controller
             $winnings = "None";
         }
 
-  
+        // $this->app->validate([
+        //     'player-numbers[]' => 'required',
+        //     'player-powerball[]' => 'required',
+        // ]);
+
         
-        $welcomes = ['Welcome', 'Aloha', 'Welkom', 'Bienvenidos', 'Bienvenu', 'Welkomma'];
-        dump($player_powerball);
-        return $this->app->view('index', [
-            'welcome' => $welcomes[array_rand($welcomes)],
-            'player_numbers' => $this->app->input('player-numbers[]'),
-            'cost' => $cost,
+        $this->app->redirect('/', [
+            'gameSaved' => true,
             'winnings' => $winnings,
-            'matches' => $matches,
+            'player_numbers' => $player_numbers,
+            'player_powerball' => $player_powerball,
             'winning_numbers' => $winning_numbers,
-            'ball1' => $ball1,
-            'ball2' => $ball2,
-            'ball3' => $ball3,
-            'ball4' => $ball4,
-            'ball5' => $ball5,
+            'powerball' => $powerball,
+            'player_matches' => $player_matches,
+            'powerball_match' => $powerball_match,
+            'matches_found' =>  $matches_found,
 
         ]);
-    }
-    public function prizes()
-    {
-        $gameSaved = $this->app->old('gameSaved');
-        
-        return $this->app->view('/prizes', [
-            'gameSaved' => $gameSaved,
-        ]);
-    }
-    public function submitted()
-    {
-        $player_ball1 = $this->app->input('sku');
-        $welcomes = ['Welcome', 'Aloha', 'Welkom', 'Bienvenidos', 'Bienvenu', 'Welkomma'];
-        $this->app->redirect('/results', [
-            'gameSaved' => true
-        ]);
        
+    }
+    public function play()
+    {
+        $this->app->redirect('/', [
+            'play' => true,
+        ]);
     }
     public function winnings()
     {
