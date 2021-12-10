@@ -5,8 +5,12 @@
 @endsection
 
 @section('content')
-  <h1><b>${{ $total }}</b></h1>
-  <h1>Project 3 - Powerball</h1>
+  {{-- <h1><b>${{ $total }}</b></h1> --}}
+  
+  <h6><b>Estimated Jackpot</b></h6>
+  <h1><b>$450 Million</b></h1>
+  
+  
   <div class='flex-center'>
     <a href='/winnings'> <button>My Winnings!</button></a>
     <a href='/results'> <button>View Results!</button></a>
@@ -18,6 +22,7 @@
 
 
   <section class='instructions'>
+  <h1>Project 3 - Powerball</h1>
     <h2>How to Play:</h2>
       <ul>
         <li>Each play will cost the player $2</li>
@@ -43,8 +48,8 @@
 
 
     
- @if ($play)
-   <section class='border'>
+@if ($play)
+   <section class='form'>
         <form method='POST' action='/submitted'>
             <h2>Select Your Numbers</h2>
             <h4>Choose 5</h4>
@@ -442,15 +447,11 @@
             </div>
         </form>
     </section>
- @endif
+@endif
 
-
-
-
-  
 
 @if ($gameSaved)
-    <section class='border'>
+    <section>
         <h2>Estimated Jackpot: ${{ $total }}!</h2>
 
         <h2>Powerball Results:</h2>
@@ -502,12 +503,7 @@
                 </span>
             @endif
         </div>
-
     </section>
-
-    <div class='flex'>
-         <a href='/play'> <button>Play Again!</button></a>
-    </div>
 @endif
 
 
@@ -515,7 +511,7 @@
   
 @if (!$play)
     <div class='flex-center'>
-        <a href='/play'> <button>Play!</button></a>
+        <a href='/play'> <button class='play'>Play!</button></a>
     </div>
 @endif
   

@@ -6,16 +6,19 @@
 
 @section('content')
 <a href='/'> <button>&#8678; Back</button></a>
-    <h2>My Winnings</h2>
-    
-      <h2>Project 3 - Powerball</h2>
- <section>
-        <h2> Winnings: <?php echo $winnings; ?></h2>
-        <br>
-        <h2>Game Cost: $<?php echo $cost;?></h2>
+    <section>
+        <h1>My Winnings</h1>
+        
+        @if (!$winnings)
+            You haven't won anything yet!
+        @elseif ($winnings) 
+            {{ $winnings }}
+        @endif
+
         <div class='flex'>
-            <a href='/index.php'> <button>Play Again!</button></a>
+            <a href='../play'> <button>Play Again!</button></a>
         </div>
     </section>
+
    
 @endsection

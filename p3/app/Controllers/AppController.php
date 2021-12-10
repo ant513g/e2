@@ -213,10 +213,10 @@ class AppController extends Controller
     }
     public function winnings()
     {
-        $welcomes = ['Welcome', 'Aloha', 'Welkom', 'Bienvenidos', 'Bienvenu', 'Welkomma'];
+        $winnings = $this->app->old('winnings');
         
         return $this->app->view('winnings/index', [
-            'welcome' => $welcomes[array_rand($welcomes)]
+            'winnings' => $winnings,
         ]);
     }
     public function results()
