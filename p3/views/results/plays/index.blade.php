@@ -1,13 +1,13 @@
 @extends('templates/master')
 
 @section('title')
-   My Winnings
+  Plays
 @endsection
 
 @section('content')
-<a href='/'> <button>&#8678; Back</button></a>
+<a href='/results'> <button>&#8678; Back</button></a>
     <section>
-        <h1>My Winnings</h1>
+        <h1>Plays</h1>
         
         @if (!$winnings)
             You haven't won anything yet!

@@ -8,6 +8,6 @@ return [
     '/prizes' => ['AppController', 'prizes'],
     '/submitted' => ['AppController', 'submitted'],
     '/results' => ['AppController', 'results'],
-    '/winnings' => ['AppController', 'winnings'],
+    '/results/plays' => ['AppController', 'plays'],
     '/play' => ['AppController', 'play'],
 ];
