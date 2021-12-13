@@ -6,7 +6,7 @@ Product Not Found
 
 @section('content')
 
-<h2>Product Not Found</h2>
+<h2 test='product-not-found-header'>Product Not Found</h2>
  <p>
     Sorry, we were not able to find the product you were looking for.
 </p>

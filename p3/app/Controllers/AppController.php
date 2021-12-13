@@ -42,7 +42,7 @@ class AppController extends Controller
             'total' => $total,
             'submitted' => false,
             'gameSaved' => $gameSaved,
-            'winnings' => $winnings,
+            'winnings' => number_format($winnings, 0),
             'player_numbers' => $player_numbers,
             'player_powerball' => $player_powerball,
             'winning_numbers' => $winning_numbers,
@@ -64,36 +64,48 @@ class AppController extends Controller
 
     public function submitted()
     {
+        
+        // array_key_exists('0', $player_numbers);
+       
+        // $player_numbers = count($player_numbers);
+
+        // COME BACK TO VALIDATION
+        // $this->app->validate([
+        //     'player-numbers' => 'required',
+        //     'player-powerball' => 'required',
+        // ]);
+        
         $player_numbers = $this->app->input('player-numbers');
         $player_powerball = $this->app->input('player-powerball');
-      
+
+
          # Player's Selected Numbers
-        $player_ball1 = (int)$player_numbers[0];
-        $player_ball2 = (int)$player_numbers[1];
-        $player_ball3 = (int)$player_numbers[2];
-        $player_ball4 = (int)$player_numbers[3];
-        $player_ball5 = (int)$player_numbers[4];
+        $player_ball_1 = (int)$player_numbers[0];
+        $player_ball_2 = (int)$player_numbers[1];
+        $player_ball_3 = (int)$player_numbers[2];
+        $player_ball_4 = (int)$player_numbers[3];
+        $player_ball_5 = (int)$player_numbers[4];
         $player_powerball = (int)$player_powerball[0];
 
         # Drawn Balls
-        // $ball1 = rand(1,65);
-        // $ball2 = rand($ball1+1, 66); #  Min must be greater than the previous ball, Max must leave space for all the balls
-        // $ball3 = rand($ball2+1, 67);
-        // $ball4 = rand($ball3+1, 68);
-        // $ball5 = rand($ball4+1, 69); 
+        // $ball_1 = rand(1,65);
+        // $ball_2 = rand($ball_1+1, 66); #  Min must be greater than the previous ball, Max must leave space for all the balls
+        // $ball_3 = rand($ball_2+1, 67);
+        // $ball_4 = rand($ball_3+1, 68);
+        // $ball_5 = rand($ball_4+1, 69); 
         // $powerball = rand(1,26);
-        $ball1 = rand(1,2);
-        $ball2 = rand($ball1+1, 3); #  Min must be greater than the previous ball, Max must leave space for all the balls
-        $ball3 = rand($ball2+1, 4);
-        $ball4 = rand($ball3+1, 5);
-        $ball5 = rand($ball4+1, 6); 
+        $ball_1 = rand(1,2);
+        $ball_2 = rand($ball_1+1, 3); #  Min must be greater than the previous ball, Max must leave space for all the balls
+        $ball_3 = rand($ball_2+1, 4);
+        $ball_4 = rand($ball_3+1, 5);
+        $ball_5 = rand($ball_4+1, 6); 
         $powerball = rand(1,2);
 
         # Array of computer Number Drawn
-        $winning_numbers = [$ball1, $ball2, $ball3, $ball4, $ball5];
+        $winning_numbers = [$ball_1, $ball_2, $ball_3, $ball_4, $ball_5];
         
         # Player Numbers
-        $player_numbers = [$player_ball1, $player_ball2, $player_ball3, $player_ball4, $player_ball5];
+        $player_numbers = [$player_ball_1, $player_ball_2, $player_ball_3, $player_ball_4, $player_ball_5];
     
         # Array of the player numbers that matched the drawn balls
         $matches = [];
@@ -107,29 +119,14 @@ class AppController extends Controller
         # if not, powerball_match is nothing
         $powerball_match = ($powerball === $player_powerball) ? $powerball : null;
         
-        # These are all separate statements to see if any of the players numbers match any balls number drawn
-        # If they do, they are pushed to the array
-        if (in_array($player_ball1, $winning_numbers)) {
-            $matches[] = $player_ball1;
-        }
-        if (in_array($player_ball2, $winning_numbers)) {
-            $matches[] = $player_ball2;
-        }
-        if (in_array($player_ball3, $winning_numbers)) {
-            $matches[] = $player_ball3;
-        }
-        if (in_array($player_ball4, $winning_numbers)) {
-            $matches[] = $player_ball4;
-        }
-        if (in_array($player_ball5, $winning_numbers)) {
-            $matches[] = $player_ball5;
-        }
+        #Originally I had if statements to compare the arrays, but then I found this function.
+        $matches = array_intersect($winning_numbers, $player_numbers);
 
         # Prizes
-        $total = number_format(450000000);
-        $jackpot= number_format(306000000);
-        $second_prize = number_format(1000000);
-        $third_prize = number_format(50000);
+        $total = 450000000;
+        $jackpot= 306000000;
+        $second_prize = 1000000;
+        $third_prize = 50000;
         $fourth_prize = 100;
         $fifth_prize = 100;
         $sixth_prize = 7;
@@ -145,52 +142,69 @@ class AppController extends Controller
             $correct = true;
             if (count($matches) == 0) {
                 $matches_found = "No Match + Powerball";
-                $winnings = "$" . $ninth_prize;
+                $winnings = $ninth_prize;
             } elseif (count($matches) == 1) {
                 $matches_found = "One Match + Powerball";
-                $winnings = "$" . $eighth_prize;
+                $winnings = $eighth_prize;
             } elseif (count($matches) == 2) {
                 $matches_found = "Two Matches + Powerball";
-                $winnings = "$" . $seventh_prize;
+                $winnings = $seventh_prize;
             } elseif (count($matches) == 3) {
                 $matches_found = "Three Matches + Powerball";
-                $winnings = "$" . $fifth_prize;
+                $winnings = $fifth_prize;
             } elseif (count($matches) == 4) {
                 $matches_found = "Four Matches + Powerball";
-                $winnings = "$" . $third_prize;
+                $winnings = $third_prize;
             } elseif (count($matches) == 5) {
                 $matches_found = 'jackpot';
                 $winnings = "JACKPOT $" . $jackpot;
             }
         } elseif (count($matches) == 0) {
             $matches_found = "No Match";
-            $winnings = "None";
+            $winnings = null;
         } elseif (count($matches) == 1) {
             $matches_found = "One Match";
-            $winnings = "None";
+            $winnings = null;
         } elseif (count($matches) == 2) {
             $matches_found = "Two Matches";
-            $winnings = "None";
+            $winnings = null;
         } elseif (count($matches) == 3) {
             $matches_found = "Three Matches";
-            $winnings = "$" . $sixth_prize;
+            $winnings = $sixth_prize;
         } elseif (count($matches) == 4) {
             $matches_found = "Four Matches";
-            $winnings = "$" . $fourth_prize;
+            $winnings = $fourth_prize;
         } elseif (count($matches) == 5) {
             $matches_found = "Five Matches";
-            $winnings = "$" . $second_prize;
+            $winnings = $second_prize;
         } else {
             $matches_found = "No Match";
-            $winnings = "None";
+            $winnings = null;
         }
 
         // $this->app->validate([
         //     'player-numbers[]' => 'required',
         //     'player-powerball[]' => 'required',
         // ]);
+        $this->app->db()->insert('plays', [
+            'timestamp' => date('Y-m-d H:i:s'),
+            'ball_1' => $ball_1,
+            'ball_2' => $ball_2,
+            'ball_3' => $ball_3,
+            'ball_4' => $ball_4,
+            'ball_5' => $ball_5,
+            'powerball' => $powerball,
+            'player_ball_1' => $player_ball_1,
+            'player_ball_2' => $player_ball_2,
+            'player_ball_3' => $player_ball_3,
+            'player_ball_4' => $player_ball_4,
+            'player_ball_5' => $player_ball_5,
+            'player_powerball' => $player_powerball,
+            'matches' => count($matches),
+            'powerball_match' => $powerball_match,
+            'winnings' => $winnings,
+        ]);
 
-        
         $this->app->redirect('/', [
             'gameSaved' => true,
             'winnings' => $winnings,
@@ -202,7 +216,6 @@ class AppController extends Controller
             'powerball_match' => $powerball_match,
             'matches_found' =>  $matches_found,
         ]);
-       
     }
     public function play()
     {
@@ -210,20 +223,76 @@ class AppController extends Controller
             'play' => true,
         ]);
     }
-    public function plays()
-    {
-        $winnings = $this->app->old('winnings');
-        
-        return $this->app->view('results/plays/index', [
-            'winnings' => $winnings,
-        ]);
-    }
+ 
     public function results()
     {
-        $welcomes = ['Welcome', 'Aloha', 'Welkom', 'Bienvenidos', 'Bienvenu', 'Welkomma'];
+        $plays = $this->app->db()->all('plays');
+        // $welcomes[array_rand($welcomes)]
         
         return $this->app->view('results/index', [
-            'welcome' => $welcomes[array_rand($welcomes)]
+            'plays' => $plays,
+        ]);
+    }
+    public function plays()
+    {
+        $id = $this->app->param('id');
+        $plays = $this->app->db()->findById('plays', $id);
+
+        $player_ball_1 = $plays['player_ball_1'];
+        $player_ball_2 = $plays['player_ball_2'];
+        $player_ball_3 = $plays['player_ball_3'];
+        $player_ball_4 = $plays['player_ball_4'];
+        $player_ball_5 = $plays['player_ball_5'];
+        $player_powerball = $plays['player_powerball'];
+
+        $ball_1 = $plays['ball_1'];
+        $ball_2 = $plays['ball_2'];
+        $ball_3 = $plays['ball_3'];
+        $ball_4 = $plays['ball_4'];
+        $ball_5 = $plays['ball_5'];
+        $powerball = $plays['powerball'];
+
+        $winning_numbers = [$ball_1, $ball_2, $ball_3, $ball_4, $ball_5];
+
+        $player_numbers = [$player_ball_1, $player_ball_2, $player_ball_3, $player_ball_4, $player_ball_5];
+        // foreach ($winning_numbers as $key) {
+        //    $value = array_search($key, $player_numbers); 
+        //    if($value) {
+
+        //    }
+        //    dump($value);
+        // }
+
+
+        foreach ($winning_numbers as $key) {
+            $value = array_search($key, $player_numbers);
+            dump($value);
+        }
+        $matches = array_intersect($winning_numbers, $player_numbers);
+        dump($matches);
+        // $matches = [];
+
+        $powerball_match = '';
+
+        $matches_found = '';
+
+        # Checks to see if there a match for powerball
+        # if not, powerball_match is nothing
+        $powerball_match = ($powerball === $player_powerball) ? $powerball : null;
+
+       
+
+        return $this->app->view('results/plays/index', [
+            'id' => $id,
+            'plays' => $plays,
+            // 'winnings' => $winnings,
+            'player_numbers' => $player_numbers,
+            'player_powerball' => $player_powerball,
+            'winning_numbers' => $winning_numbers,
+            'powerball' => $powerball,
+            'matches' => $matches,
+            'powerball_match' => $powerball_match,
+            // 'matches_found' =>  $matches_found,
         ]);
     }
 }

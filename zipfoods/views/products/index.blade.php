@@ -5,7 +5,7 @@ All Products
 @endsection
 
 @section('content')
-<h2> All Products</h2>
+<h2 test='all-products-header'> All Products</h2>
  <a href='/products/new'>Add a new product</a>
 <div id='product-index'>
     @foreach ($products as $product)
