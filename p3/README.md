@@ -1,7 +1,7 @@
 *Any instructions/notes in italics should be removed from the template before submitting* 
 
 # Project 3
-+ By: *your first and last name*
++ By: Ana Tolentino Cruz
 + URL: http://e2p3.anadesign.me/
 
 ## Graduate requirement
@@ -20,8 +20,9 @@
             'player-numbers' => 'required ',
             'player-powerball' => 'required',
             ]);
-        ```
-       And I wanted to try doing something like this, but it didn't work.
+ ```
+        
+And I wanted to try doing something like this, but it didn't work.
 
 ```
 if(count($player_powerball) !== 1)  {
@@ -30,7 +31,7 @@ if(count($player_powerball) !== 1)  {
         if(count($player_numbers) !== 5)  {
             $this->app->errorsExist();
         }
-        ```
+```
 
 
 
