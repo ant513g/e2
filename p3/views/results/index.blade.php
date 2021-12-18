@@ -5,36 +5,35 @@
 @endsection
 
 @section('content')
-<a href='/'> <button>&#8678; Back</button></a>
-    <h2>Results</h2>
+<a test='back-link' href='/'> <button>&#8678; Back</button></a>
+    <h2 test='result-heading'>Results</h2>
 
     @foreach ($plays as $play)
-    <a href='/results/plays?id={{ $play['id'] }}'> 
-        <section>
-            <div class='review-name'>{{ $play['id'] }}</div>
-                <span class='ball winner'>
+    <a href='/results/plays?id={{ $play['id'] }}' test='result-link' class='result-link'> 
+        <section test='results' class='results-list'>
+       
+            <div test='playerid' class='playerid'>{{ $play['id'] }}</div>
+            <h3> Winning Numbers</h3>
+            <div>
+                <span test='ball' class='ball winner'>
                     {{ $play['ball_1'] }}
                 </span>
-                 <span class='ball winner'>
+                 <span test='ball' class='ball winner'>
                     {{ $play['ball_2'] }}
                 </span>
-                 <span class='ball winner'>
+                 <span test='ball' class='ball winner'>
                     {{ $play['ball_3'] }}
                 </span>
-                 <span class='ball winner'>
+                 <span test='ball' class='ball winner'>
                     {{ $play['ball_4'] }}
                 </span>
-                 <span class='ball winner'>
+                 <span test='ball' class='ball winner'>
                     {{ $play['ball_5'] }}
                 </span>
-                 <span class='powerball winner'>
+                 <span test='powerball' class='powerball winner'>
                     {{ $play['powerball'] }}
                 </span>
-            {{-- @foreach ($winning_numbers as $numbers) 
-                <span class='ball winner'>
-                    {{ $numbers }}
-                </span>
-            @endforeach --}}
+                </div>
         </section>
     </a>
     @endforeach

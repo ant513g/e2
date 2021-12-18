@@ -13,7 +13,25 @@
 *your list of outside resources go here*
 
 ## Notes for instructor
-*any notes for me to refer to while grading; if none, omit this section*
+ I couldn't figure another validation to use because both forms are arrays
+ ```
+        # Ideally I would use required and numeric. 
+        $this->app->validate([
+            'player-numbers' => 'required ',
+            'player-powerball' => 'required',
+            ]);
+        ```
+       And I wanted to try doing something like this, but it didn't work.
+       
+```
+if(count($player_powerball) !== 1)  {
+            $this->app->errorsExist();
+        }
+        if(count($player_numbers) !== 5)  {
+            $this->app->errorsExist();
+        }
+        ```
+
 
 
 ## Codeception testing output

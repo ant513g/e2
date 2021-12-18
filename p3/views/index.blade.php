@@ -5,22 +5,17 @@
 @endsection
 
 @section('content')
-  {{-- <h1><b>${{ $total }}</b></h1> --}}
-  
   <h6><b>Estimated Jackpot</b></h6>
   <h1><b>$450 Million</b></h1>
-  
   
   <div class='flex-center'>
     <a href='/results'> <button>View Results!</button></a>
   </div>
-  
-    
+
   <section class='instructions'>
   <h1>Project 3 - Powerball</h1>
     <h2>How to Play:</h2>
       <ul>
-        <li>Each play will cost the player $2</li>
         <li>Choosing Numbers - The player will select five numbers in acending order from 1 to 69 for the white
             balls
             and one number from 1 to 26 for the red ball, the Powerball. </li>
@@ -31,18 +26,13 @@
             to 26 for the drawing.</li>
         <li>If the player's ball numbers does not match any of the winning numbers, the player does not win.</li>
         <li>Depending on the number of matches, the player may receive a prize.
-        </li>
-           
+        </li>  
       </ul>
       <div class='flex-center'>
         <a href='/prizes'> <button>View Prizes!</button></a>
       </div>
   </section>
 
-
-
-
-    
     @if ($play)
     <section class='form'>
             <form method='POST' action='/submitted'>
@@ -113,8 +103,6 @@
             </div>
             <br>
 
-
-            {{-- Fix this --}}
             <div test='matches-found' >
             <h2>Matches: 
                 @if($matches_found === 'jackpot')
@@ -147,24 +135,18 @@
 
   
     @if (!$play)
-        <div class='flex-center'>
+        <div test='play-button' class='flex-center'>
             <a href='/play'> <button class='play'>Play!</button></a>
         </div>
     @endif
     
   
-    <section>
+    <section test='winnings'>
         <h2>Winnings:</h2>
         @if (!$winnings)
             You haven't won anything yet!
         @elseif ($winnings) 
             ${{ $winnings }}
-        @endif
-
-        @if (!$cost)
-            You haven't played yet!
-        @elseif($cost)
-            {{ $cost }}
         @endif
 
     </section>
